@@ -1,0 +1,50 @@
+{
+  "name": "calendar",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "heroku local:start",
+    "super": "supervisor ./bin/www",
+    "start_old": "node ./bin/www",
+    "migrate_local": "sequelize db:migrate --url sqlite://C:\\Users\\Jorge\\Desktop\\calendario\\calendar.sqlite",
+    "seed_local": "sequelize db:seed:all --url sqlite://C:\\Users\\Jorge\\Desktop\\calendario\\calendar.sqlite",
+    "open_heroku": "heroku open",
+    "migrate_heroku": "heroku run ./node_modules/.bin/sequelize db:migrate --url \\postgres://stwejfnlsrfgum:c2873f05379d9357d7f4649c48f530dcdd81430e31e95ea77a543ec4ed338c4f@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/dendh81kl8he0j",
+    "seed_heroku": "heroku run ./node_modules/.bin/sequelize db:seed:all --url \\postgres://stwejfnlsrfgum:c2873f05379d9357d7f4649c48f530dcdd81430e31e95ea77a543ec4ed338c4f@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/dendh81kl8he0j",
+    "reset_heroku": "heroku pg:reset DATABASE",
+    "mon_heroku": "heroku maintenance:on",
+    "moff_heroku": "heroku maintenance:off"
+  },
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.6.0"
+  },
+  "dependencies": {
+    "array-to-csv": "^1.0.1",
+    "body-parser": "~1.18.2",
+    "connect-session-sequelize": "^5.2.2",
+    "cookie-parser": "~1.4.3",
+    "csv": "^4.0.0",
+    "dateformat": "^3.0.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.15.5",
+    "express-flash": "0.0.2",
+    "express-partials": "^0.3.0",
+    "express-session": "^1.15.6",
+    "flash": "^1.1.0",
+    "form-serialize": "^0.7.2",
+    "heroku": "^7.18.3",
+    "method-override": "^2.3.10",
+    "morgan": "~1.9.0",
+    "node-pre-gyp": "^0.11.0",
+    "pg": "^7.4.0",
+    "sequelize": "^4.37.10",
+    "sequelize-cli": "^4.0.0",
+    "serve-favicon": "~2.4.5",
+    "supervisor": "^0.12.0"
+  },
+  "devDependencies": {
+    "sqlite3": "^3.1.13"
+  }
+}

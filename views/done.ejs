@@ -1,0 +1,24 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+<h2>Ha seleccionado:</h2>    
+
+<table cellpadding = "5">
+<tr>
+<th style = "text-align: center">ASIGNATURA</th>
+<th style = "text-align: center">GRUPO</th>
+</tr>
+	
+<% for (var clase in solicitud){  %>
+  <tr>
+    <th><%=solicitud[clase].name.replace(/-/g, " ")%></th>
+    <th style = "text-align: right"><%=solicitud[clase].group_id %></th> 
+  </tr>
+  <%  }%>
+ </table>
+ </br>
+ <h3>Descargue su calendario: <a href="/download">Calendario primer cuatrimestre 18-19</a></h3>
