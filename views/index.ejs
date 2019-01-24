@@ -11,50 +11,55 @@ table, th, td {
 function selectAll(check){
   var radio, i = 0;
   while (radio = check.form.elements[i++]){
-    if (radio.type == "radio" && radio.value == check.value){
+    if (radio.type == "radio" && radio.value==check.value){
       radio.checked = true;
       if(radio.value > 40){
         document.getElementsByName("cuarto").forEach( elemento => {
           elemento.innerHTML = check.value;
         });
       }
-      else if(radio.value > 30) {
-        document.getElementsByName("tercero").forEach( elemento => {
-          elemento.innerHTML = check.value;
-        });
-      }
-      else if(radio.value > 20) {
-        document.getElementsByName("segundo").forEach( elemento => {
-          elemento.innerHTML = check.value;
-        });
-      }
-      else if(radio.value > 10){
-      document.getElementsByName("primero").forEach( elemento => {
-          elemento.innerHTML = check.value;
-      });
     }
   }
+
+//Solo una asignatura por cuadro
+  document.getElementById(check.name).innerHTML = check.value;
+
+
 }
+
+function showSubject(tick){
+  
 }
 </script>
 
-<%	var elmg= "ELECTROMAGNETISMO"; %>
-<%	var ssit= "SEÑALES-Y-SISTEMAS"; %>
-<% var sdg = "SISTEMAS-DIGITALES-I";%>
-<%	var tinf= "TEORÍA-DE-LA-INFORMACIÓN";%>
-<%	var stra= "SISTEMAS-DE-TRASMISIÓN";%>
-<%  var rdor= "REDES-DE-ORDENADORES"; %>
-<%	var rdpr= "RADIACIÓN-Y-PROPAGACIÓN"; %>
+<!--SEGUNDO-->
+<%  var elmg= "ELMG"; %>
+
+
+<!--CUARTO TELEMATICA-->
+<%	var rcmo= "RCMO"; %>
+<%  var iweb= "IWEB"; %>
+<%  var cdps= "CDPS"; %>
+<%  var reco= "RECO"; %>
+<%  var segu= "SEGU"; %>
 
 <form id="group-form" method= "POST" action= "/done">
 	<input type="hidden" name="asignaturas[0]" value = <%=elmg%>>
-	<input type="hidden" name="asignaturas[1]" value = <%=ssit%>>
-	<input type="hidden" name="asignaturas[2]" value = <%=sdg%>>
-	<input type="hidden" name="asignaturas[3]" value = <%=tinf%>>
-	<input type="hidden" name="asignaturas[4]" value = <%=stra%>>
-  <input type="hidden" name="asignaturas[5]" value = <%=rdor%>>
-	<input type="hidden" name="asignaturas[6]" value = <%=rdpr%>>
 
+  <input type="hidden" name="asignaturas[1]" value = <%=rcmo%>>
+  <input type="hidden" name="asignaturas[2]" value = <%=iweb%>>
+  <input type="hidden" name="asignaturas[3]" value = <%=cdps%>>
+  <input type="hidden" name="asignaturas[4]" value = <%=reco%>>
+  <input type="hidden" name="asignaturas[5]" value = <%=segu%>>
+
+<h4> Mostrar: </h4>
+<input type="checkbox" name="cursos">Primero
+<input type="checkbox" name="cursos">Segundo
+<input type="checkbox" name="cursos">Tercero
+<input type="checkbox" name="cursos">Cuarto Sistemas
+<input type="checkbox" name="cursos">Cuarto Telemática
+<input type="checkbox" name="cursos">Cuarto Electrónica
+<input type="checkbox" name="cursos">Cuarto Imagen
 
 
 <table cellpadding = "5">
@@ -63,9 +68,10 @@ function selectAll(check){
 <th style = "text-align: center">SELECCIÓN</th>
 <th style = "text-align: center">GRUPO</th>
 </tr>
+  <!-- SEGUNDO -->
   <tr>
     <th>ELECTROMAGNETISMO</th>
-    <th name = "segundo" style = "text-align: center"></th>
+    <th name = "segundo" id="group[<%=elmg%>]" style = "text-align: center"></th>
     <th>
       <input type="radio" name="group[<%=elmg%>]" value="21" onclick="selectAll(this)">21 
       <input type="radio" name="group[<%=elmg%>]" value="22" onclick="selectAll(this)">22 
@@ -74,72 +80,56 @@ function selectAll(check){
       <input type="radio" name="group[<%=elmg%>]" value="25" onclick="selectAll(this)">25
     </th> 
   </tr>
+
   <tr>
-    <th>SEÑALES Y SISTEMAS</th>
-    <th name = "segundo" style = "text-align: center"></th>
+    <!-- CUARTO: TELEMÁTICA -->
+    <th>REDES DE COMUNICACIONES MÓVILES</th>
+    <th name = "cuarto" id="group[<%=rcmo%>]" style = "text-align: center"></th>
     <th>
-      <input type="radio" name="group[<%=ssit%>]" value="21" onclick="selectAll(this)">21 
-      <input type="radio" name="group[<%=ssit%>]" value="22" onclick="selectAll(this)">22 
-      <input type="radio" name="group[<%=ssit%>]" value="23" onclick="selectAll(this)">23
-      <input type="radio" name="group[<%=ssit%>]" value="24" onclick="selectAll(this)">24
-      <input type="radio" name="group[<%=ssit%>]" value="25" onclick="selectAll(this)">25
-    </th> 
-  </tr>
-  <tr>
-    <th>SISTEMAS DIGITALES I</th>
-    <th name = "tercero" style = "text-align: center"></th>
-    <th>
-      <input type="radio" name="group[<%=sdg%>]" value="31" onclick="selectAll(this)">31 
-      <input type="radio" name="group[<%=sdg%>]" value="32" onclick="selectAll(this)">32 
-      <input type="radio" name="group[<%=sdg%>]" value="33" onclick="selectAll(this)">33
-      <input type="radio" name="group[<%=sdg%>]" value="34" onclick="selectAll(this)">34
-      <input type="radio" name="group[<%=sdg%>]" value="35" onclick="selectAll(this)">35
-    </th> 
-  </tr>
-  <tr>
-    <th>TEORÍA DE LA INFORMACIÓN</th>
-    <th name = "tercero" style = "text-align: center"></th>
-    <th>
-      <input type="radio" name="group[<%=tinf%>]" value="31" onclick="selectAll(this)">31 
-      <input type="radio" name="group[<%=tinf%>]" value="32" onclick="selectAll(this)">32 
-      <input type="radio" name="group[<%=tinf%>]" value="33" onclick="selectAll(this)">33
-      <input type="radio" name="group[<%=tinf%>]" value="34" onclick="selectAll(this)">34
-      <input type="radio" name="group[<%=tinf%>]" value="35" onclick="selectAll(this)">35
-    </th> 
-  </tr>
-  <tr>
-    <th>SISTEMAS DE TRASMISIÓN</th>
-    <th name = "tercero" style = "text-align: center"></th>
-    <th>
-      <input type="radio" name="group[<%=stra%>]" value="31" onclick="selectAll(this)">31 
-      <input type="radio" name="group[<%=stra%>]" value="32" onclick="selectAll(this)">32 
-      <input type="radio" name="group[<%=stra%>]" value="33" onclick="selectAll(this)">33
-      <input type="radio" name="group[<%=stra%>]" value="34" onclick="selectAll(this)">34 
-      <input type="radio" name="group[<%=stra%>]" value="35" onclick="selectAll(this)">35 
-    </th> 
-  </tr>
-    <tr>
-    <th>REDES DE ORDENADORES</th>
-    <th name = "tercero" style = "text-align: center"></th>
-    <th>
-      <input type="radio" name="group[<%=rdor%>]" value="31" onclick="selectAll(this)">31 
-      <input type="radio" name="group[<%=rdor%>]" value="32" onclick="selectAll(this)">32 
-      <input type="radio" name="group[<%=rdor%>]" value="33" onclick="selectAll(this)">33
-      <input type="radio" name="group[<%=rdor%>]" value="34" onclick="selectAll(this)">34 
-      <input type="radio" name="group[<%=rdor%>]" value="35" onclick="selectAll(this)">35 
+      <input type="radio" name="group[<%=rcmo%>]" value="42" onclick="selectAll(this)">42 
     </th>
-    </tr>
-    <tr> 
-    <th>RADIACIÓN Y PROPAGACIÓN</th>
-    <th name = "tercero" style = "text-align: center"></th>
-    <th>
-      <input type="radio" name="group[<%=rdpr%>]" value="31" onclick="selectAll(this)">31 
-      <input type="radio" name="group[<%=rdpr%>]" value="32" onclick="selectAll(this)">32 
-      <input type="radio" name="group[<%=rdpr%>]" value="33" onclick="selectAll(this)">33
-      <input type="radio" name="group[<%=rdpr%>]" value="34" onclick="selectAll(this)">34 
-      <input type="radio" name="group[<%=rdpr%>]" value="35" onclick="selectAll(this)">35 
-    </th> 
   </tr>
+
+  <tr>
+    <th>INGENIERÍA WEB</th>
+    <th name = "cuarto" id="group[<%=iweb%>]" style = "text-align: center"></th>
+    <th>
+      <input type="radio" name="group[<%=iweb%>]" value="42" onclick="selectAll(this)">42 
+    </th>
+  </tr>
+
+  </tr>
+    <th>CENTRO DE DATOS Y PROVISIÓN DE SERVICIOS</th>
+    <th name = "cuarto" id="group[<%=cdps%>]" style = "text-align: center"></th>
+    <th>
+      <input type="radio" name="group[<%=cdps%>]" value="42" onclick="selectAll(this)">42 
+    </th>
+  </tr>
+
+  <tr>
+    <th>REDES COMPARTIDAS</th>
+    <th name = "cuarto" id="group[<%=reco%>]" style = "text-align: center"></th>
+    <th>
+
+      <input type="radio" name="group[<%=reco%>]" value="42" onclick="selectAll(this)">42 
+    </th>
+  </tr>
+
+  </tr>
+    <th>SEGURIDAD EN SISTEMAS Y REDES DE TELECOMUNICACIÓN</th>
+    <th name = "cuarto" id="group[<%=segu%>]" style = "text-align: center"></th>
+    <th>
+      <input type="radio" name="group[<%=segu%>]" value="42" onclick="selectAll(this)">42 
+    </th>
+  </tr>
+
+
+  </tr>
+ 
+
+
+
+
 </table>
 <br>
 <input type="submit" value="Save">
